@@ -1,3 +1,9 @@
+### run server
+- `nodemon index.js`
+
+### password encryption
+- `yarn add bcryptjs`
+
 ### CORS set up
 - `yarn add cors`
 ```

@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Perks from "../Perks"
 import PhotosUploader from "../PhotosUploader"
 import AccountNav from "../AccountNav"
-import { Navigate } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import axios from "axios"
 
 export default function PlacesFormPage() {
+  const { id } = useParams()
+  console.log({ id })
   const [title, setTitle] = useState('')
   const [address, setAddress] = useState('')
   const [addedPhotos, setAddedPhotos] = useState([])
@@ -16,6 +18,12 @@ export default function PlacesFormPage() {
   const [checkOut, setCheckOut] = useState('')
   const [maxGuests, setMaxGuests] = useState(1)
   const [redirect, setRedirect] = useState(false)
+  useEffect(() => {
+    if (!id) {
+      return
+    }
+    axios.get('/places/' + id)
+  }, [id])
 
   function inputHeader(text) {
     return (

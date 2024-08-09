@@ -158,8 +158,4 @@ app.put('/places', async (req, res) => {
 	})
 })
 
-app.get('/places', async (req, res) => {
-	res.json(await Place.find())
-})
-
 app.listen(4000)
